@@ -34,11 +34,10 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 ADD filter_feelnc_topX.sh /usr/local/bin/
-ADD pull_go_topX_gafout_feelnc.sh /usr/local/bin
-ADD summary.sh  /usr/local/bin
+ADD pull_go_topX_gafout_feelnc_each.sh /usr/local/bin
+ADD pull_go_topX_gafout_feelnc_all.sh /usr/local/bin
 ADD makeUNILNCmapping.sh /usr/local/bin
-ADD makeUNILNCmapping_quant.sh /usr/local/bin
 
 WORKDIR /usr/local/bin
 
-RUN chmod 777 filter_feelnc_topX.sh pull_go_topX_gafout_feelnc.sh summary.sh makeUNILNCmapping.sh makeUNILNCmapping_quant.sh
+RUN chmod 777 filter_feelnc_topX.sh pull_go_topX_gafout_feelnc_each.sh pull_go_topX_gafout_feelnc_all.sh makeUNILNCmapping.sh

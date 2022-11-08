@@ -21,11 +21,12 @@ touch "$tissue"_feelnc_GO_2.gaf
 sed 's/\t\t/\tempty\t/g' goa_chicken.gaf > goa_chicken.gaf.tmp
 
 #SET EACH RELEVANT FILE AS VARIABLE FOR EASE OF ACCESS
-feelncX="lncRNA_classes_UNILNC_top2.txt"
+feelncX="$tissue"_lncRNA_classes_UNILNC_top2.txt
 mapping="gga_ens_uni_mapping_15DEC21.csv"
 gaf="goa_chicken.gaf"
 tmpgaf="goa_chicken.gaf.tmp"
-unilncmap="$tissue_lncRNA_mapping.txt"
+unilncmap="$tissue"_lncRNA_mapping.txt
+
 
 date=$(date '+%Y%m%d')
 
@@ -87,5 +88,5 @@ cat noGO_2.tmp | sort | uniq > "$tissue"_targets2_noGO_feelnc.txt
 
 cat noBP_2.tmp | sort | uniq > "$tissue"_targets2_noBP_feelnc.txt
 
-rm *.tmp
+#rm *.tmp
 

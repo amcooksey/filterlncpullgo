@@ -20,6 +20,8 @@ sed -i 's/^[ \t]*//;s/[ \t]*$//' stattmp.txt
 
 readarray -t tissuearray < stattmp.txt
 
+echo $? "created tissuearray"
+
 rm stattmp.txt
 
 for i in "${!tissuearray[@]}";
@@ -31,10 +33,16 @@ do
     fi
 done
 
+
 touch "$tissue"_lncRNA_mapping.txt "$tissue"_temp.txt
 query=$(( 1 + $index ))
 column=$(( $index + 5 ))
+
+echo "tissue is" $tissue
+echo "query is" $query
+echo "column is" $column
 grep q"$query" unified_lncrna_ids.tracking | cut -f 1,2,$column > "$tissue"_temp.txt
+echo $? "grepped query from tracking"
 sed -i 's/q[0-9]://g' "$tissue"_temp.txt
 cat "$tissue"_temp.txt | while read -r unilnc xloc id remainder
 do
